@@ -44,7 +44,7 @@
 <!--        <table tableName="article"/>-->
 <!--        <table tableName="category"/>-->
 <!--        <table tableName="comment"/>-->
-<!--        <table tableName="config"/>-->
+        <table tableName="config"/>
 <!--        <table tableName="label"/>-->
 <!--        <table tableName="link"/>-->
     </context>
