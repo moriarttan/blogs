@@ -1,21 +1,17 @@
 package com.example.blogs.domain;
 
+/**
+ * @author 15755
+ */
 public class About {
     private Integer id;
-
     private String title;
-
-    private Integer likeNumber;
-
-    private Integer visitNumber;
-
-    private Integer sizeNumber;
-
-    private Boolean isLike;
-
-    private Boolean isComment;
-
     private String content;
+    private Integer likeNumber;
+    private Integer visitNumber;
+    private Integer sizeNumber;
+    private Integer isLike;
+    private Integer isComment;
 
     public Integer getId() {
         return id;
@@ -31,6 +27,14 @@ public class About {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Integer getLikeNumber() {
@@ -57,45 +61,19 @@ public class About {
         this.sizeNumber = sizeNumber;
     }
 
-    public Boolean getIsLike() {
+    public Integer getIsLike() {
         return isLike;
     }
 
-    public void setIsLike(Boolean isLike) {
+    public void setIsLike(Integer isLike) {
         this.isLike = isLike;
     }
 
-    public Boolean getIsComment() {
+    public Integer getIsComment() {
         return isComment;
     }
 
-    public void setIsComment(Boolean isComment) {
+    public void setIsComment(Integer isComment) {
         this.isComment = isComment;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", title=").append(title);
-        sb.append(", likeNumber=").append(likeNumber);
-        sb.append(", visitNumber=").append(visitNumber);
-        sb.append(", sizeNumber=").append(sizeNumber);
-        sb.append(", isLike=").append(isLike);
-        sb.append(", isComment=").append(isComment);
-        sb.append(", content=").append(content);
-        sb.append("]");
-        return sb.toString();
     }
 }
