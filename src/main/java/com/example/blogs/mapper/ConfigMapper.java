@@ -1,30 +1,22 @@
 package com.example.blogs.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.blogs.domain.Config;
-import com.example.blogs.domain.ConfigExample;
-import java.util.List;
+
+import com.example.blogs.front.vo.ConfigVo;
 import org.apache.ibatis.annotations.Param;
 
-public interface ConfigMapper {
-    long countByExample(ConfigExample example);
+/**
+ * @author 15755
+ */
+public interface ConfigMapper extends BaseMapper<Config> {
+    /**
+     * 获取网站设置
+     */
+    ConfigVo get(@Param("id") Integer id);
 
-    int deleteByExample(ConfigExample example);
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Config record);
-
-    int insertSelective(Config record);
-
-    List<Config> selectByExample(ConfigExample example);
-
-    Config selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Config record, @Param("example") ConfigExample example);
-
-    int updateByExample(@Param("record") Config record, @Param("example") ConfigExample example);
-
-    int updateByPrimaryKeySelective(Config record);
-
-    int updateByPrimaryKey(Config record);
+    /**
+     * 浏览量统计
+     */
+    Integer setVisit(@Param("id") Integer id);
 }

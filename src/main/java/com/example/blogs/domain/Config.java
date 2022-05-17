@@ -1,19 +1,20 @@
 package com.example.blogs.domain;
 
 public class Config {
+    /* id */
     private Integer id;
 
-    private String backAddress;
+    /* 网站名称 */
+    private String name;
 
-    private String backName;
+    /* 网站英文名称 */
+    private String nameEn;
 
-    private String backPhone;
+    /* 网站备案号 */
+    private String recordNumber;
 
-    private Integer integrateProportion;
-
-    private Integer boxRefreshCount;
-
-    private Integer boxRefreshNum;
+    /* 浏览量统计 */
+    private Integer visitNumber;
 
     public Integer getId() {
         return id;
@@ -23,68 +24,35 @@ public class Config {
         this.id = id;
     }
 
-    public String getBackAddress() {
-        return backAddress;
+    public String getName() {
+        return name;
     }
 
-    public void setBackAddress(String backAddress) {
-        this.backAddress = backAddress;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBackName() {
-        return backName;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setBackName(String backName) {
-        this.backName = backName;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    public String getBackPhone() {
-        return backPhone;
+    public String getRecordNumber() {
+        return recordNumber;
     }
 
-    public void setBackPhone(String backPhone) {
-        this.backPhone = backPhone;
+    public void setRecordNumber(String recordNumber) {
+        this.recordNumber = recordNumber;
     }
 
-    public Integer getIntegrateProportion() {
-        return integrateProportion;
+    public Integer getVisitNumber() {
+        return visitNumber;
     }
 
-    public void setIntegrateProportion(Integer integrateProportion) {
-        this.integrateProportion = integrateProportion;
-    }
-
-    public Integer getBoxRefreshCount() {
-        return boxRefreshCount;
-    }
-
-    public void setBoxRefreshCount(Integer boxRefreshCount) {
-        this.boxRefreshCount = boxRefreshCount;
-    }
-
-    public Integer getBoxRefreshNum() {
-        return boxRefreshNum;
-    }
-
-    public void setBoxRefreshNum(Integer boxRefreshNum) {
-        this.boxRefreshNum = boxRefreshNum;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", backAddress=").append(backAddress);
-        sb.append(", backName=").append(backName);
-        sb.append(", backPhone=").append(backPhone);
-        sb.append(", integrateProportion=").append(integrateProportion);
-        sb.append(", boxRefreshCount=").append(boxRefreshCount);
-        sb.append(", boxRefreshNum=").append(boxRefreshNum);
-        sb.append("]");
-        return sb.toString();
+    public void setVisitNumber(Integer visitNumber) {
+        this.visitNumber = visitNumber;
     }
 }
