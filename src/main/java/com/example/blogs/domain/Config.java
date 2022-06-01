@@ -1,19 +1,19 @@
 package com.example.blogs.domain;
 
 public class Config {
-    /* id */
+    // id
     private Integer id;
 
-    /* 网站名称 */
+    // 网站名称
     private String name;
 
-    /* 网站英文名称 */
+    // 网站英文名称
     private String nameEn;
 
-    /* 网站备案号 */
+    // 网站备案号
     private String recordNumber;
 
-    /* 浏览量统计 */
+    // 浏览量统计
     private Integer visitNumber;
 
     public Integer getId() {

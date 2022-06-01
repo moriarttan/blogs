@@ -15,7 +15,8 @@ public class LinkService {
     private LinkMapper linkMapper;
 
     public Result<List<Link>> list() {
-        List<Link> list = linkMapper.selectByExample(null);
-        return Result.success(list);
+//        List<Link> list = linkMapper.selectByExample(null);
+//        return Result.success(list);
+        return null;
     }
 }

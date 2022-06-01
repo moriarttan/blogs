@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: dev
+
+# jwt
+jwt:
+  # 密钥key
+  secret: JWTSecret
+  # HeaderKEY
+  token-header: Authorization
+  # token前缀字符
+  token-prefix: Bearer
+  # 过期时间 单位秒
+  expiration: 86400000
+  # 配置不需要认证的接口
+  antMatchers:
+    - "/**/login"
+    - "/**/upload"

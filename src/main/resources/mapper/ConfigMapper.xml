@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.blogs.mapper.ConfigMapper">
-  <resultMap id="BaseResultMap" type="com.example.blogs.front.vo.ConfigVo">
+  <resultMap id="BaseResultMap" type="com.example.blogs.domain.Config">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -10,7 +10,7 @@
     <result column="visit_number" jdbcType="INTEGER" property="visitNumber" />
   </resultMap>
 
-  <select id="get" resultType="com.example.blogs.front.vo.ConfigVo" resultMap="BaseResultMap">
+  <select id="get" resultType="com.example.blogs.domain.Config" resultMap="BaseResultMap">
     select *
     from config
     <where>
