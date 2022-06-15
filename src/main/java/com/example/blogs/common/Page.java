@@ -1,30 +1,33 @@
 package com.example.blogs.common;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.List;
 
-/* 分页返回参数
-* */
+/**
+ * 分页返回参数
+ * @param <T>
+ */
 @Data
 public class Page<T> {
-//    @ApiModelProperty(value = "第几页")
+    @ApiModelProperty(value = "第几页")
     private Integer pageNum;
 
-//    @ApiModelProperty(value = "每页数量")
+    @ApiModelProperty(value = "每页数量")
     private Integer pageSize;
 
-//    @ApiModelProperty(value = "页总数")
+    @ApiModelProperty(value = "页总数")
     private Integer totalPage;
 
-//    @ApiModelProperty(value = "数据总数")
+    @ApiModelProperty(value = "数据总数")
     private Long total;
 
-//    @ApiModelProperty(value = "获得数据数量")
+    @ApiModelProperty(value = "获得数据数量")
     private Integer totalSize;
 
-//    @ApiModelProperty(value = "获得数据")
+    @ApiModelProperty(value = "获得数据")
     private List<T> rows;
 
     /**

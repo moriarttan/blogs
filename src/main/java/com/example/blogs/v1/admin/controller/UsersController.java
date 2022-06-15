@@ -1,19 +1,27 @@
 package com.example.blogs.v1.admin.controller;
 
+import com.example.blogs.common.Page;
+import com.example.blogs.common.Result;
+import com.example.blogs.service.users.UsersService;
+import com.example.blogs.v1.admin.dto.UsersDTO;
+import com.example.blogs.v1.admin.vo.UsersVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Api(tags = "用户")
 @RequestMapping("v1/admin/users")
 public class UsersController {
+    UsersService usersService;
 
     @ApiOperation("分页列表")
-    @RequestMapping("/pageList")
-    public String pageList() {
-        return "pageList";
+    @GetMapping("pageList")
+    public Result<Page<UsersVO>> pageList(@Validated UsersDTO usersDTO) {
+        return usersService.pageList(usersDTO);
     }
 
     @ApiOperation("列表")
