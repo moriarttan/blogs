@@ -1,58 +1,62 @@
-package com.example.blogs.v1.admin.controller;
+package com.example.blogs.v1.back.controller;
 
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.domain.About;
 import com.example.blogs.service.about.AboutService;
+import com.example.blogs.v1.back.dto.AboutSearchDTO;
+import com.example.blogs.v1.back.vo.AboutSearchVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-@Controller
+/** 关于我们
+ * @author 15755
+ */
 @Api(tags = "关于我们")
-@RequestMapping("v1/admin/about")
+@RestController("backAboutController")
+@RequestMapping("v1/back/about")
 public class AboutController {
 
-    @Autowired
-    AboutService aboutService;
+    @Resource
+    private AboutService aboutService;
 
     @ApiOperation("分页列表")
-    @RequestMapping("/pageList")
-    public Result<Page<About>> pageList() {
-        return aboutService.pageList();
+    @GetMapping("/pageList")
+    public Result<Page<AboutSearchVO>> pageList(@Validated AboutSearchDTO searchDTO) {
+        return aboutService.pageList(searchDTO);
     }
 
     @ApiOperation("列表")
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public Result<List<About>> list() {
         return aboutService.queryList();
     }
 
     @ApiOperation("添加")
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public Result<?> add() {
         return aboutService.exAdd();
     }
 
     @ApiOperation("修改")
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public Result<?> update() {
         return aboutService.exUpdate();
     }
 
     @ApiOperation("详情")
-    @RequestMapping("/info")
+    @PostMapping("/info")
     public Result<?> info() {
         return aboutService.exInfo();
     }
 
     @ApiOperation("删除")
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public Result<?> delete() {
         return aboutService.exDelete();
     }

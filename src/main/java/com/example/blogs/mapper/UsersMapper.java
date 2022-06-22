@@ -2,9 +2,8 @@ package com.example.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.blogs.domain.Users;
-import com.example.blogs.test.domain.Test;
-import com.example.blogs.v1.admin.dto.UsersDTO;
-import com.example.blogs.v1.admin.vo.UsersVO;
+import com.example.blogs.v1.back.dto.UsersDTO;
+import com.example.blogs.v1.back.vo.UsersVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.blogs.v1.admin.dto;
+package com.example.blogs.v1.back.dto;
 
 import com.example.blogs.common.PageForm;
 import io.swagger.annotations.ApiModel;

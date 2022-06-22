@@ -1,10 +1,10 @@
-package com.example.blogs.v1.admin.controller;
+package com.example.blogs.v1.back.controller;
 
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.service.users.UsersService;
-import com.example.blogs.v1.admin.dto.UsersDTO;
-import com.example.blogs.v1.admin.vo.UsersVO;
+import com.example.blogs.v1.back.dto.UsersDTO;
+import com.example.blogs.v1.back.vo.UsersVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;

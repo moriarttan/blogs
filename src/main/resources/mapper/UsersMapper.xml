@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.blogs.mapper.UsersMapper">
-    <select id="pageList" resultType="com.example.blogs.v1.admin.vo.UsersVO">
+    <select id="pageList" resultType="com.example.blogs.v1.back.vo.UsersVO">
         select * from user
         <where>
             deleted=0

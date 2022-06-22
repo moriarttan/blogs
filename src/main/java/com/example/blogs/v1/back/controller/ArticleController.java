@@ -1,4 +1,4 @@
-package com.example.blogs.v1.admin.controller;
+package com.example.blogs.v1.back.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@Api(tags = "链接")
-@RequestMapping("v1/admin/link")
-public class LinkController {
+@Api(tags = "文章")
+@RequestMapping("v1/admin/article")
+public class ArticleController {
 
     @ApiOperation("分页列表")
     @RequestMapping("/pageList")

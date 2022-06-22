@@ -1,12 +1,13 @@
 package com.example.blogs.service.about;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.domain.About;
 import com.example.blogs.mapper.AboutMapper;
+import com.example.blogs.v1.back.dto.AboutSearchDTO;
+import com.example.blogs.v1.back.vo.AboutSearchVO;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +22,11 @@ public class AboutServeiceImpl extends ServiceImpl<AboutMapper, About> implement
     * @Date: 2022/6/2
     */
     @Override
-    public Result<Page<About>> pageList() {
-        return null;
+    public Result<Page<AboutSearchVO>> pageList(AboutSearchDTO searchDTO) {
+        PageHelper.startPage(searchDTO.getPageNum(), searchDTO.getPageSize(), "create_time desc");
+        List<AboutSearchVO> list = baseMapper.pageList(searchDTO);
+
+        return Result.success(Page.toPage(list));
     }
 
 

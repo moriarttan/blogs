@@ -1,4 +1,4 @@
-package com.example.blogs.v1.admin.controller;
+package com.example.blogs.v1.back.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@Api(tags = "评论")
-@RequestMapping("v1/admin/comment")
-public class CommentController {
+@Api(tags = "标签")
+@RequestMapping("v1/admin/label")
+public class LabelController {
 
     @ApiOperation("分页列表")
     @RequestMapping("/pageList")

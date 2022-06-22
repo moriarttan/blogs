@@ -1,4 +1,4 @@
-package com.example.blogs.v1.admin.vo;
+package com.example.blogs.v1.back.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

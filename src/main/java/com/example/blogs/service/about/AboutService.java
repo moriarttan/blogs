@@ -1,15 +1,11 @@
 package com.example.blogs.service.about;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.domain.About;
-import com.example.blogs.domain.Link;
-import com.example.blogs.mapper.AboutMapper;
-import com.example.blogs.mapper.LinkMapper;
-import org.springframework.stereotype.Service;
+import com.example.blogs.v1.back.dto.AboutSearchDTO;
+import com.example.blogs.v1.back.vo.AboutSearchVO;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -26,7 +22,7 @@ public interface AboutService {
     * @Author: Mr.Tan
     * @Date: 2022/6/2
     */
-    Result<Page<About>> pageList();
+    Result<Page<AboutSearchVO>> pageList(AboutSearchDTO searchDTO);
     
     /**
     * @Description: 查询列表
