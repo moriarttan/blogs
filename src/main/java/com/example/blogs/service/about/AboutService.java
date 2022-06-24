@@ -4,6 +4,8 @@ import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.domain.About;
 import com.example.blogs.v1.back.dto.AboutSearchDTO;
+import com.example.blogs.v1.back.dto.AboutUpdateDTO;
+import com.example.blogs.v1.back.vo.AboutInfoVO;
 import com.example.blogs.v1.back.vo.AboutSearchVO;
 
 import java.util.List;
@@ -68,4 +70,25 @@ public interface AboutService {
     * @Date: 2022/6/2
     */
     Result<?> exDelete();
+
+    /**
+     * 添加
+     * @param aboutUpdateDTO
+     * @return
+     */
+    Result<?> add(AboutUpdateDTO aboutUpdateDTO);
+
+    /**
+     * 编辑
+     * @param aboutUpdateDTO
+     * @return
+     */
+    Result<?> update(AboutUpdateDTO aboutUpdateDTO);
+
+    /**
+     * 详情
+     * @param id 请求id
+     * @return
+     */
+    Result<AboutInfoVO> info(Integer id);
 }
