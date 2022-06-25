@@ -34,42 +34,6 @@ public interface AboutService {
     * @Date: 2022/6/2
     */
     Result<List<About>> queryList();
-    
-    /**
-    * @Description: 新增
-    * @Param: 
-    * @return: 
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    Result<?> exAdd();
-    
-    /**
-    * @Description: 编辑
-    * @Param: 
-    * @return: 
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    Result<?> exUpdate();
-    
-    /**
-    * @Description: 详情
-    * @Param: 
-    * @return: 
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    Result<?> exInfo();
-    
-    /**
-    * @Description: 删除
-    * @Param: 
-    * @return: 
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    Result<?> exDelete();
 
     /**
      * 添加
@@ -91,4 +55,11 @@ public interface AboutService {
      * @return
      */
     Result<AboutInfoVO> info(Integer id);
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    Result<?> delete(Integer id);
 }

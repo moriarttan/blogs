@@ -61,7 +61,7 @@ public class AboutController {
 
     @ApiOperation("删除")
     @PostMapping("/delete")
-    public Result<?> delete() {
-        return aboutService.exDelete();
+    public Result<?> delete(@RequestBody ValidatedId id) {
+        return aboutService.delete(id.getId());
     }
 }

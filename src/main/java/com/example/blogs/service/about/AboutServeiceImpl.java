@@ -48,55 +48,6 @@ public class AboutServeiceImpl extends ServiceImpl<AboutMapper, About> implement
     }
 
     /**
-    * @Description: 添加
-    * @Param:
-    * @return:
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    @Override
-    public Result<?> exAdd() {
-        return Result.success(null);
-    }
-
-    /**
-    * @Description: 编辑
-    * @Param:
-    * @return:
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    @Override
-    public Result<?> exUpdate() {
-        return Result.success(null);
-    }
-
-    /**
-    * @Description: 详情
-    * @Param:
-    * @return:
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    @Override
-    public Result<?> exInfo() {
-        return Result.success(null);
-    }
-
-    /**
-    * @Description: 删除
-    * @Param:
-    * @return:
-    * @Author: Mr.Tan
-    * @Date: 2022/6/2
-    */
-    @Override
-    public Result<?> exDelete() {
-        return Result.success(null);
-    }
-
-
-    /**
      * 添加
      * @param aboutUpdateDTO
      * @return
@@ -126,5 +77,14 @@ public class AboutServeiceImpl extends ServiceImpl<AboutMapper, About> implement
         }
         AboutInfoVO aboutInfoVO = BeanUtil.copyProperties(about, AboutInfoVO.class);
         return Result.success(aboutInfoVO);
+    }
+
+    @Override
+    public Result<?> delete(Integer id) {
+        Integer tag = baseMapper.deleteById(id);
+        if (tag == 0) {
+            return Result.failed("删除失败");
+        }
+        return Result.success();
     }
 }
