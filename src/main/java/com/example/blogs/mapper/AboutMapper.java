@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 关于我们
+ */
 public interface AboutMapper extends BaseMapper<About> {
 
     /**

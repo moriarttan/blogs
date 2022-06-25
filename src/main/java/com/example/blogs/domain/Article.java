@@ -1,105 +1,54 @@
 package com.example.blogs.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.util.Date;
+
+/**
+ * 文章
+ * @author 15755
+ */
+@Data
+@ApiModel("文章")
 public class Article {
+
+    @ApiModelProperty("id")
     private Integer id;
 
+    @ApiModelProperty("标题")
     private String title;
 
+    @ApiModelProperty("点赞数")
     private Integer likeNumber;
 
+    @ApiModelProperty("浏览数")
     private Integer visitNumber;
 
+    @ApiModelProperty("字数")
     private Integer sizeNumber;
 
+    @ApiModelProperty("是否允许点赞：0否 1是")
     private Byte isLike;
 
+    @ApiModelProperty("是否允许评论：0否 1是")
     private Byte isComment;
 
+    @ApiModelProperty("状态：0停用 1启用")
     private Byte status;
 
+    @ApiModelProperty("删除： 0未删除 1已删除")
     private Byte isDeleted;
 
+    @ApiModelProperty("内容")
     private String content;
 
-    public Integer getId() {
-        return id;
-    }
+    @ApiModelProperty("创建时间")
+    private Date createTime;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getLikeNumber() {
-        return likeNumber;
-    }
-
-    public void setLikeNumber(Integer likeNumber) {
-        this.likeNumber = likeNumber;
-    }
-
-    public Integer getVisitNumber() {
-        return visitNumber;
-    }
-
-    public void setVisitNumber(Integer visitNumber) {
-        this.visitNumber = visitNumber;
-    }
-
-    public Integer getSizeNumber() {
-        return sizeNumber;
-    }
-
-    public void setSizeNumber(Integer sizeNumber) {
-        this.sizeNumber = sizeNumber;
-    }
-
-    public Byte getIsLike() {
-        return isLike;
-    }
-
-    public void setIsLike(Byte isLike) {
-        this.isLike = isLike;
-    }
-
-    public Byte getIsComment() {
-        return isComment;
-    }
-
-    public void setIsComment(Byte isComment) {
-        this.isComment = isComment;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Byte getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
+    @ApiModelProperty("修改时间")
+    private Date updateTime;
 
     @Override
     public String toString() {

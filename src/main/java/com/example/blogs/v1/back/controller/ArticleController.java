@@ -1,48 +1,70 @@
 package com.example.blogs.v1.back.controller;
 
+import com.example.blogs.common.Page;
+import com.example.blogs.common.Result;
+import com.example.blogs.domain.Article;
+import com.example.blogs.service.article.ArticleService;
+import com.example.blogs.v1.back.dto.ArticleSearchDTO;
+import com.example.blogs.v1.back.dto.ArticleUpdateDTO;
+import com.example.blogs.v1.back.vo.ArticleInfoVO;
+import com.example.blogs.v1.back.vo.ArticleSearchVO;
+import com.example.blogs.validated.ValidatedId;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+ * 文章管理
+ * @author 15755
+ */
 @Controller
 @Api(tags = "文章")
 @RequestMapping("v1/admin/article")
 public class ArticleController {
 
+    @Resource
+    private ArticleService articleService;
+
     @ApiOperation("分页列表")
-    @RequestMapping("/pageList")
-    public String pageList() {
-        return "pageList";
+    @GetMapping("/pageList")
+    public Result<Page<ArticleSearchVO>> pageList(ArticleSearchDTO articleSearchDTO) {
+        return articleService.pageList(articleSearchDTO);
     }
 
     @ApiOperation("列表")
-    @RequestMapping("/list")
-    public String list() {
-        return "list";
+    @GetMapping("/list")
+    public Result<List<Article>> list() {
+        return articleService.queryList();
     }
 
     @ApiOperation("添加")
-    @RequestMapping("/add")
-    public String add() {
-        return "add";
+    @PostMapping("/add")
+    public Result<?> add(@RequestBody ArticleUpdateDTO articleUpdateDTO) {
+        return articleService.add(articleUpdateDTO);
     }
 
     @ApiOperation("修改")
-    @RequestMapping("/update")
-    public String update() {
-        return "update";
+    @PostMapping("/update")
+    public Result<?> update(@RequestBody ArticleUpdateDTO articleUpdateDTO) {
+        return articleService.update(articleUpdateDTO);
     }
 
     @ApiOperation("详情")
-    @RequestMapping("/info")
-    public String info() {
-        return "info";
+    @PostMapping("/info")
+    public Result<ArticleInfoVO> info(@RequestBody ValidatedId id) {
+        return articleService.info(id.getId());
     }
 
     @ApiOperation("删除")
-    @RequestMapping("/delete")
-    public String delete() {
-        return "delete";
+    @PostMapping("/delete")
+    public Result<?> delete(@RequestBody ValidatedId id) {
+        return articleService.delete(id.getId());
     }
 }

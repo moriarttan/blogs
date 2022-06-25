@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class AboutServeiceImpl extends ServiceImpl<AboutMapper, About> implements AboutService {
+public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements AboutService {
     /**
     * @Description: 分页列表
     * @Param:
