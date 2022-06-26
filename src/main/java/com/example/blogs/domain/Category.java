@@ -1,67 +1,34 @@
 package com.example.blogs.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
+@ApiModel("分类")
 public class Category {
+    @ApiModelProperty("id")
     private Integer id;
 
+    @ApiModelProperty("名称")
+    private String name;
+
+    @ApiModelProperty("排序")
     private Integer sort;
 
+    @ApiModelProperty("状态：0停用 1启用")
     private Byte status;
 
+    @ApiModelProperty("删除：0未删除 1已删除")
     private Byte isDeleted;
 
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
+    @ApiModelProperty("修改时间")
     private Date updateTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Byte getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {
