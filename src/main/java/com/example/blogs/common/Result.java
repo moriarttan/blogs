@@ -1,15 +1,19 @@
 package com.example.blogs.common;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /* 返回结果 */
 @Data
+@ApiModel(description = "返回结果")
 public class Result<T> {
-//  状态码
+    @ApiModelProperty(value = "状态码")
     private Integer code;
-//  返回消息
+    @ApiModelProperty(value = "返回消息")
     private String message;
-//  返回数据
+
+    @ApiModelProperty(value = "返回数据")
     private T data;
 
     public Result() {
@@ -84,12 +88,35 @@ public class Result<T> {
 
     /**
      * 失败返回结果
+     * @param message 提示信息
+     * @code message 错误码
+     */
+    public static <T> Result<T> failed(Integer code,String message) {
+        return new Result<T>(code, message, null);
+    }
+
+    /**
+     * 失败返回结果
      * @param resultCode 提示信息
      * @param <T>
      * @return
      */
     public static <T> Result<T> failed(ResultCode resultCode) {
         return new Result<T>(resultCode.getCode(), resultCode.getMessage(), null);
+    }
+
+    /**
+     * 未授权返回结果
+     */
+    public static <T> Result<T> forbidden(T data) {
+        return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
+    }
+
+    /**
+     * 未登录返回结果
+     */
+    public static <T> Result<T> unauthorized(T data) {
+        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
     }
 
     @Override

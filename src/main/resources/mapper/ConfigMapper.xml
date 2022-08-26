@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.blogs.mapper.ConfigMapper">
-  <resultMap id="BaseResultMap" type="com.example.blogs.domain.Config">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="name_en" jdbcType="VARCHAR" property="nameEn" />
-    <result column="record_number" jdbcType="VARCHAR" property="recordNumber" />
-    <result column="visit_number" jdbcType="INTEGER" property="visitNumber" />
-  </resultMap>
 
-  <select id="get" resultType="com.example.blogs.domain.Config" resultMap="BaseResultMap">
-    select *
-    from config
-    <where>
-      id=#{id}
-    </where>
-  </select>
-
-  <update id="setVisit">
-    update config set visit_number=visit_number+1
-    <where>
-      id=#{id}
-    </where>
-  </update>
+    <select id="pageList" resultType="com.example.blogs.vo.ConfigVO">
+        select
+        id, name, name_en, record_number, website, visit_number
+        from config
+    </select>
 </mapper>
+

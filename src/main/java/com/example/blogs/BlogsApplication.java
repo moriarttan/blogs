@@ -1,6 +1,7 @@
 package com.example.blogs;
 
 
+import com.example.blogs.enums.UserStatusEnum;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

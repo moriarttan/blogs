@@ -1,28 +1,59 @@
 package com.example.blogs.service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.blogs.dto.ConfigDTO;
+import com.example.blogs.vo.ConfigVO;
+import com.example.blogs.common.Page;
+import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
-import com.example.blogs.domain.Config;
-import com.example.blogs.mapper.ConfigMapper;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.List;
-
-@Service
-public class ConfigService extends ServiceImpl<ConfigMapper, Config> {
+import com.example.blogs.entity.Config;
 
 
-    public Result<Config> get() {
-        Config config = getBaseMapper().get(1);
-        return Result.success(config);
-    }
+/**
+* 网站设置表  服务类接口
+* @author FF
+* @since 2022-08-27
+*/
+public interface ConfigService extends IService<Config> {
 
-    public Result setVisit() {
-        Integer i = getBaseMapper().setVisit(1);
-        if (1 != i) {
-            return Result.failed("浏览量设置失败");
-        }
-        return Result.success();
-    }
+    /**
+    * 分页列表
+    *
+    * @param dto 分页列表查询页码页数
+    * @return {@link ConfigVO}
+    */
+    Result<Page<ConfigVO>> pageList(ConfigDTO dto);
+
+
+    /**
+    * 新增
+    *
+    * @param dto 新增/修改参数
+    * @return {@link Result}
+    */
+    Result<?> add(ConfigDTO dto);
+
+    /**
+    * 修改
+    *
+    * @param dto 新增/修改参数
+    * @return {@link Result}
+    */
+    Result<?> update(ConfigDTO dto);
+
+    /**
+    * 详情
+    *
+    * @param id id
+    * @return {@link Result<ConfigVO>}
+    */
+    Result<ConfigVO> info(Long id);
+
+    /**
+    * 删除
+    *
+    * @param id id
+    * @return {@link Result}
+    */
+    Result<?> delete(Long id);
 }

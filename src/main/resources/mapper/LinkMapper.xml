@@ -2,4 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.blogs.mapper.LinkMapper">
 
+    <select id="pageList" resultType="com.example.blogs.vo.LinkVO">
+        select
+        id, name, sort, deleted, create_user_id, create_username, create_time, update_user_id, update_username, update_time, link, icon
+        from link
+    </select>
 </mapper>
+
