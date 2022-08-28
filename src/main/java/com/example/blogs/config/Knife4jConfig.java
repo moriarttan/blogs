@@ -33,7 +33,7 @@ public class Knife4jConfig {
                 .groupName("前台1.0版本")
                 .select()
                 //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.example.blogs.v1.front.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.blogs.front.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -46,7 +46,7 @@ public class Knife4jConfig {
                 .groupName("后台1.0版本")
                 .select()
                 //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.example.blogs.v1.back.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.blogs.back.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -54,8 +54,8 @@ public class Knife4jConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("API接口文档")
-                .description("Mr谭的博客网站API接口文档")
-                .contact(new Contact("Mr谭", "https://github.com/tanhuidong", "15755566506@qq.com"))
+                .description("言覃的博客网站API接口文档")
+                .contact(new Contact("言覃", "https://github.com/tanhuidong", "15755566506@qq.com"))
                 .version("1.0.0")
                 .build();
     }

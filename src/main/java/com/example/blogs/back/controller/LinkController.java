@@ -1,4 +1,4 @@
-package com.example.blogs.controller;
+package com.example.blogs.back.controller;
 
 
 
