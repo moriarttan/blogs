@@ -35,31 +35,31 @@ private static final long serialVersionUID = 1L;
     @TableField("sort")
     private Integer sort;
 
-    @ApiModelProperty("是否已删除：0未删除；1已删除")
+    @ApiModelProperty(value = "是否已删除：0未删除；1已删除", hidden = true)
     @TableField("deleted")
     private Integer deleted;
 
-    @ApiModelProperty("创建人id")
+    @ApiModelProperty(value = "创建人id", hidden = true)
     @TableField(value = "create_user_id", fill = FieldFill.INSERT)
     private Long createUserId;
 
-    @ApiModelProperty("创建人用户名")
+    @ApiModelProperty(value = "创建人用户名", hidden = true)
     @TableField(value = "create_username", fill = FieldFill.INSERT)
     private String createUsername;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty(value = "创建时间", hidden = true)
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
-    @ApiModelProperty("修改人id")
+    @ApiModelProperty(value = "修改人id", hidden = true)
     @TableField(value = "update_user_id", fill = FieldFill.INSERT_UPDATE)
     private Long updateUserId;
 
-    @ApiModelProperty("修改人用户名")
+    @ApiModelProperty(value = "修改人用户名", hidden = true)
     @TableField(value = "update_username", fill = FieldFill.INSERT_UPDATE)
     private String updateUsername;
 
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty(value = "修改时间", hidden = true)
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 

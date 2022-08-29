@@ -8,6 +8,8 @@ import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Label;
 
+import java.util.List;
+
 
 /**
 * 标签表  服务类接口
@@ -56,4 +58,12 @@ public interface LabelService extends IService<Label> {
     * @return {@link Result}
     */
     Result<?> delete(Long id);
+
+
+    /**
+     * 列表
+     * @param dto 筛选条件
+     * @return
+     */
+    Result<List<LabelVO>> list(LabelDTO dto);
 }

@@ -1,6 +1,8 @@
 package com.example.blogs.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.blogs.enums.DeletedEnum;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.LabelDTO;
 import com.example.blogs.vo.LabelVO;
@@ -13,6 +15,9 @@ import com.example.blogs.service.LabelService;
 import com.example.blogs.utils.CopyUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * 标签表 服务实现类
@@ -89,5 +94,23 @@ public class LabelServiceImpl extends ServiceImpl<LabelMapper, Label> implements
             return Result.failed("删除操作失败");
         }
         return Result.success();
+    }
+
+    /**
+     * 列表
+     * @param dto 筛选条件
+     * @return
+     */
+    @Override
+    public Result<List<LabelVO>> list(LabelDTO dto) {
+        List<Label> labels = baseMapper.selectList(new LambdaQueryWrapper<Label>()
+                .eq(Label::getDeleted, DeletedEnum.NOT_DELETED)
+                .like(dto.getName() != null, Label::getName, dto.getName())
+        );
+        List<LabelVO> list = new ArrayList<>();
+        for (Label label: labels) {
+            list.add(CopyUtil.transfer(label, LabelVO.class));
+        }
+        return Result.success(list);
     }
 }
