@@ -28,25 +28,10 @@ spring:
       write-dates-as-timestamps: false
   #redis
   redis:
-    database: 9
+    database: 0
     port: 6379
-    password: 123456
+    # password: 123456
     host: 127.0.0.1
-  #rabbitmq
-  rabbitmq:
-    host: ${domain}
-    port: 35672
-    username: root
-    password: root
-    virtual-host: /
-    publisher-returns: true
-    publisher-confirm-type: correlated
-    listener:
-      #手动ack
-      simple:
-        acknowledge-mode: manual
-      direct:
-        acknowledge-mode: manual
 
 #redis自定义配置
 redis:
@@ -73,11 +58,11 @@ logging:
 #file
 file: 
   # 上传路径
-  target-url: /docker/nginx/html/img/
+  target-url: /Users/tanhuidong/data/upload
   # 文件最大: 10M
   max-size: 10485760
   # 返回前缀
-  prefix: http://${domain}/img/
+  prefix: http://${domain}/image/
 
 
 
