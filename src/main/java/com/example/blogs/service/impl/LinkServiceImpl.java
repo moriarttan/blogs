@@ -1,11 +1,13 @@
 package com.example.blogs.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.front.vo.LinkListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.LinkDTO;
 import com.example.blogs.vo.LinkVO;
 import com.example.blogs.common.Page;
-import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Link;
 import com.example.blogs.mapper.LinkMapper;
@@ -13,6 +15,9 @@ import com.example.blogs.service.LinkService;
 import com.example.blogs.utils.CopyUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * 网站链接表 服务实现类
@@ -89,5 +94,18 @@ public class LinkServiceImpl extends ServiceImpl<LinkMapper, Link> implements Li
             return Result.failed("删除操作失败");
         }
         return Result.success();
+    }
+
+    @Override
+    public List<LinkListVO> queryList() {
+        List<Link> links = baseMapper.selectList(new LambdaQueryWrapper<Link>()
+                .eq(Link::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .orderByAsc(Link::getSort)
+        );
+        List<LinkListVO> list = new ArrayList<>();
+        for (Link link: links) {
+            list.add(CopyUtil.transfer(link, LinkListVO.class));
+        }
+        return list;
     }
 }

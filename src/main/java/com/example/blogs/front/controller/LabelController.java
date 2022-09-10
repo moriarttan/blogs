@@ -5,6 +5,7 @@ import com.example.blogs.common.IdForm;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.dto.LabelDTO;
+import com.example.blogs.front.vo.LabelListVO;
 import com.example.blogs.service.LabelService;
 import com.example.blogs.validation.GroupsAdd;
 import com.example.blogs.validation.GroupsUpdate;
@@ -35,8 +36,8 @@ public class LabelController {
 
     @ApiOperation("列表")
     @GetMapping("list")
-    public Result<List<LabelVO>> list (LabelDTO dto) {
-        return labelService.list(dto);
+    public Result<List<LabelListVO>> list () {
+        return labelService.queryList();
     }
 
 }

@@ -2,11 +2,14 @@ package com.example.blogs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.blogs.dto.AboutDTO;
+import com.example.blogs.front.vo.AboutListVO;
 import com.example.blogs.vo.AboutVO;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.About;
+
+import java.util.List;
 
 
 /**
@@ -56,4 +59,10 @@ public interface AboutService extends IService<About> {
     * @return {@link Result}
     */
     Result<?> delete(Long id);
+
+    /**
+     * 前台列表
+     * @return
+     */
+    List<AboutListVO> queryList();
 }

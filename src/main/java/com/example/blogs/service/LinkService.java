@@ -2,11 +2,14 @@ package com.example.blogs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.blogs.dto.LinkDTO;
+import com.example.blogs.front.vo.LinkListVO;
 import com.example.blogs.vo.LinkVO;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Link;
+
+import java.util.List;
 
 
 /**
@@ -56,4 +59,10 @@ public interface LinkService extends IService<Link> {
     * @return {@link Result}
     */
     Result<?> delete(Long id);
+
+    /**
+     * 前台查询列表
+     * @return
+     */
+    List<LinkListVO> queryList();
 }

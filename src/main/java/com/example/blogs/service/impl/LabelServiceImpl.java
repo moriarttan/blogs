@@ -2,12 +2,12 @@ package com.example.blogs.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.blogs.enums.DeletedEnum;
+import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.front.vo.LabelListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.LabelDTO;
 import com.example.blogs.vo.LabelVO;
 import com.example.blogs.common.Page;
-import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Label;
 import com.example.blogs.mapper.LabelMapper;
@@ -98,18 +98,18 @@ public class LabelServiceImpl extends ServiceImpl<LabelMapper, Label> implements
 
     /**
      * 列表
-     * @param dto 筛选条件
+     *
      * @return
      */
     @Override
-    public Result<List<LabelVO>> list(LabelDTO dto) {
+    public Result<List<LabelListVO>> queryList() {
         List<Label> labels = baseMapper.selectList(new LambdaQueryWrapper<Label>()
-                .eq(Label::getDeleted, DeletedEnum.NOT_DELETED)
-                .like(dto.getName() != null, Label::getName, dto.getName())
+                .eq(Label::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .orderByAsc(Label::getSort)
         );
-        List<LabelVO> list = new ArrayList<>();
+        List<LabelListVO> list = new ArrayList<>();
         for (Label label: labels) {
-            list.add(CopyUtil.transfer(label, LabelVO.class));
+            list.add(CopyUtil.transfer(label, LabelListVO.class));
         }
         return Result.success(list);
     }

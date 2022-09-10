@@ -2,9 +2,9 @@ package com.example.blogs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.blogs.dto.LabelDTO;
+import com.example.blogs.front.vo.LabelListVO;
 import com.example.blogs.vo.LabelVO;
 import com.example.blogs.common.Page;
-import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Label;
 
@@ -62,8 +62,8 @@ public interface LabelService extends IService<Label> {
 
     /**
      * 列表
-     * @param dto 筛选条件
+     *
      * @return
      */
-    Result<List<LabelVO>> list(LabelDTO dto);
+    Result<List<LabelListVO>> queryList();
 }

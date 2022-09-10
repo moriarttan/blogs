@@ -1,6 +1,12 @@
 package com.example.blogs.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.blogs.entity.Link;
+import com.example.blogs.enums.DeletedEnum;
+import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.front.vo.AboutListVO;
+import com.example.blogs.front.vo.LinkListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.AboutDTO;
 import com.example.blogs.vo.AboutVO;
@@ -13,6 +19,9 @@ import com.example.blogs.service.AboutService;
 import com.example.blogs.utils.CopyUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * 关于我 服务实现类
@@ -89,5 +98,19 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
             return Result.failed("删除操作失败");
         }
         return Result.success();
+    }
+
+    @Override
+    public List<AboutListVO> queryList() {
+        List<About> lists = baseMapper.selectList(new LambdaQueryWrapper<About>()
+                .eq(About::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .eq(About::getStatus, GeneralStatusEnum.PUBLISH.value())
+                .orderByDesc(About::getCreateTime)
+        );
+        List<AboutListVO> list = new ArrayList<>();
+        for (About about: lists) {
+            list.add(CopyUtil.transfer(about, AboutListVO.class));
+        }
+        return list;
     }
 }
