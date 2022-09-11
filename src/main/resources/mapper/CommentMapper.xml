@@ -6,6 +6,9 @@
         select
         id, content, email, privacy, deleted, create_user_id, create_username, create_time, update_user_id, update_username, update_time
         from comment
+        <where>
+            deleted = 0
+        </where>
     </select>
 </mapper>
 

@@ -68,12 +68,12 @@ public class ConfigServiceImpl extends ServiceImpl<ConfigMapper, Config> impleme
     /**
     * 详情
     * @param id id
-    * @return {@link Result<ConfigVO>}
+    * @return {@link ConfigVO}
     */
     @Override
-    public Result<ConfigVO> info(Long id) {
+    public ConfigVO info(Long id) {
         Config config = baseMapper.selectById(id);
-        return Result.success(CopyUtil.transfer(config, ConfigVO.class));
+        return CopyUtil.transfer(config, ConfigVO.class);
     }
 
     /**

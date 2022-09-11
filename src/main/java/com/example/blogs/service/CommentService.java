@@ -22,7 +22,7 @@ public interface CommentService extends IService<Comment> {
     * @param dto 分页列表查询页码页数
     * @return {@link CommentVO}
     */
-    Result<Page<CommentVO>> pageList(CommentDTO dto);
+    Page<CommentVO> pageList(CommentDTO dto);
 
 
     /**

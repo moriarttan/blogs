@@ -4,7 +4,7 @@
 
     <select id="pageList" resultType="com.example.blogs.vo.ArticleVO">
         select
-        id, title, content, like_number, visit_number, size_number, like, comment, status, deleted, create_user_id, create_username, create_time, update_user_id, update_username, update_time
+        id, title, content, category_id, like_number, visit_number, size_number, `like`, comment, status, deleted, create_user_id, create_username, create_time, update_user_id, update_username, update_time
         from article
     </select>
 </mapper>

@@ -38,7 +38,7 @@ public class ArticleController {
     @ApiOperation("分页列表")
     @GetMapping("pageList")
     public Result<Page<ArticleVO>> pageList(ArticleDTO dto) {
-        return articleService.pageList(dto);
+        return Result.success(articleService.pageList(dto));
     }
 
     @PreAuthorize("hasAuthority('article:add')")

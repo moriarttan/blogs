@@ -58,7 +58,7 @@ public class ConfigController {
     @ApiOperation("详情")
     @GetMapping("info")
     public Result<ConfigVO> info(@Validated IdForm idForm) {
-        return configService.info(idForm.getId());
+        return Result.success(configService.info(idForm.getId()));
     }
 
     @PreAuthorize("hasAuthority('config:delete')")

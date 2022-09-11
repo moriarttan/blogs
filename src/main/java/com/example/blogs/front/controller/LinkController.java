@@ -33,7 +33,6 @@ public class LinkController {
     @GetMapping("list")
     public Result<List<LinkListVO>> queryList() {
 
-
         return Result.success(linkService.queryList());
     }
 }

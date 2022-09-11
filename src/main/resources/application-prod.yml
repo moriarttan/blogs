@@ -1,5 +1,5 @@
 server:
-  port: 8099
+  port: 9528
   servlet:
     context-path: /
 
@@ -19,25 +19,9 @@ spring:
       write-dates-as-timestamps: false
   #redis
   redis:
-    database: 9
+    database: 0
     port: 6379
     password: 123456
-  #rabbitmq
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
-    template:
-      #失败重试
-      retry:
-        enabled: true
-        initial-interval: 10000ms
-        max-interval: 10000ms
-        multiplier: 2
-      exchange: topic.exchange
-    publisher-returns: true
 
 #redis自定义配置
 redis:

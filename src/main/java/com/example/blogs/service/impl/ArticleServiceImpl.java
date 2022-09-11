@@ -28,9 +28,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     * @return {@link ArticleVO}
     */
     @Override
-    public Result<Page<ArticleVO>> pageList(ArticleDTO dto) {
+    public Page<ArticleVO> pageList(ArticleDTO dto) {
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize(),"create_time desc");
-        return Result.success(Page.toPage(baseMapper.pageList(dto)));
+        return Page.toPage(baseMapper.pageList(dto));
     }
 
     /**

@@ -38,7 +38,7 @@ public class CommentController {
     @ApiOperation("分页列表")
     @GetMapping("pageList")
     public Result<Page<CommentVO>> pageList(CommentDTO dto) {
-        return commentService.pageList(dto);
+        return Result.success(commentService.pageList(dto));
     }
 
     @PreAuthorize("hasAuthority('comment:add')")

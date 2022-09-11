@@ -47,7 +47,7 @@ public interface ConfigService extends IService<Config> {
     * @param id id
     * @return {@link Result<ConfigVO>}
     */
-    Result<ConfigVO> info(Long id);
+    ConfigVO info(Long id);
 
     /**
     * 删除

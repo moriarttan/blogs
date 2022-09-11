@@ -102,7 +102,7 @@ public class LabelServiceImpl extends ServiceImpl<LabelMapper, Label> implements
      * @return
      */
     @Override
-    public Result<List<LabelListVO>> queryList() {
+    public List<LabelListVO> queryList() {
         List<Label> labels = baseMapper.selectList(new LambdaQueryWrapper<Label>()
                 .eq(Label::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
                 .orderByAsc(Label::getSort)
@@ -111,6 +111,6 @@ public class LabelServiceImpl extends ServiceImpl<LabelMapper, Label> implements
         for (Label label: labels) {
             list.add(CopyUtil.transfer(label, LabelListVO.class));
         }
-        return Result.success(list);
+        return list;
     }
 }

@@ -37,7 +37,7 @@ public class LabelController {
     @ApiOperation("列表")
     @GetMapping("list")
     public Result<List<LabelListVO>> list () {
-        return labelService.queryList();
+        return Result.success(labelService.queryList());
     }
 
 }

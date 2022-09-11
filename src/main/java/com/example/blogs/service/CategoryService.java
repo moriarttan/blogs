@@ -2,11 +2,15 @@ package com.example.blogs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.blogs.dto.CategoryDTO;
+import com.example.blogs.front.vo.ArticleListVO;
+import com.example.blogs.front.vo.CategoryListVO;
 import com.example.blogs.vo.CategoryVO;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Category;
+
+import java.util.List;
 
 
 /**
@@ -56,4 +60,10 @@ public interface CategoryService extends IService<Category> {
     * @return {@link Result}
     */
     Result<?> delete(Long id);
+
+    /**
+     * 前台列表
+     * @return
+     */
+    List<CategoryListVO> queryList(Long parentId);
 }

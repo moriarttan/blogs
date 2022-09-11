@@ -55,7 +55,7 @@ public class Knife4jConfig {
         return new ApiInfoBuilder()
                 .title("API接口文档")
                 .description("言覃的博客网站API接口文档")
-                .contact(new Contact("言覃", "https://github.com/tanhuidong", "15755566506@qq.com"))
+                .contact(new Contact("Mr言覃", "https://github.com/tanhuidong", "15755566506@qq.com"))
                 .version("1.0.0")
                 .build();
     }

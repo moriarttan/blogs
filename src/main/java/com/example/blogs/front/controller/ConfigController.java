@@ -27,6 +27,6 @@ public class ConfigController {
     @ApiOperation("获取网站配置")
     @GetMapping("get")
     public Result<ConfigVO> get() {
-        return configService.info(1L);
+        return Result.success(configService.info(1L));
     }
 }

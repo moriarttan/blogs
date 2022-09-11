@@ -1,6 +1,10 @@
 package com.example.blogs.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.front.vo.ArticleListVO;
+import com.example.blogs.front.vo.CategoryListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.CategoryDTO;
 import com.example.blogs.vo.CategoryVO;
@@ -13,6 +17,9 @@ import com.example.blogs.service.CategoryService;
 import com.example.blogs.utils.CopyUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * 分类表 服务实现类
@@ -89,5 +96,23 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             return Result.failed("删除操作失败");
         }
         return Result.success();
+    }
+
+    /**
+     * 前台列表
+     * @return
+     */
+    @Override
+    public List<CategoryListVO> queryList(Long parentId) {
+        List<Category> list = baseMapper.selectList(new LambdaQueryWrapper<Category>()
+                .eq(Category::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .eq(parentId != null, Category::getParentId, parentId)
+                .orderByAsc(Category::getSort)
+        );
+        List<CategoryListVO> listVOS = new ArrayList<>();
+        for (Category category: list) {
+            listVOS.add(CopyUtil.transfer(category, CategoryListVO.class));
+        }
+        return listVOS;
     }
 }

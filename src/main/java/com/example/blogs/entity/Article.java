@@ -36,6 +36,10 @@ private static final long serialVersionUID = 1L;
     @TableField("content")
     private String content;
 
+    @ApiModelProperty("分类ID")
+    @TableField("category_id")
+    private Long categoryId;
+
     @ApiModelProperty("点赞数")
     @TableField("like_number")
     private Integer likeNumber;
@@ -49,7 +53,7 @@ private static final long serialVersionUID = 1L;
     private Integer sizeNumber;
 
     @ApiModelProperty("是否允许点赞：0 否，1 是")
-    @TableField("like")
+    @TableField("`like`")
     private Integer like;
 
     @ApiModelProperty("是否允许评论：0 否，1 是")

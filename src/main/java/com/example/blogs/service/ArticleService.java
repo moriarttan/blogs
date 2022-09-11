@@ -22,7 +22,7 @@ public interface ArticleService extends IService<Article> {
     * @param dto 分页列表查询页码页数
     * @return {@link ArticleVO}
     */
-    Result<Page<ArticleVO>> pageList(ArticleDTO dto);
+    Page<ArticleVO> pageList(ArticleDTO dto);
 
 
     /**

@@ -28,9 +28,9 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     * @return {@link CommentVO}
     */
     @Override
-    public Result<Page<CommentVO>> pageList(CommentDTO dto) {
+    public Page<CommentVO> pageList(CommentDTO dto) {
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize(),"create_time desc");
-        return Result.success(Page.toPage(baseMapper.pageList(dto)));
+        return Page.toPage(baseMapper.pageList(dto));
     }
 
     /**

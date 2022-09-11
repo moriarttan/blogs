@@ -65,5 +65,5 @@ public interface LabelService extends IService<Label> {
      *
      * @return
      */
-    Result<List<LabelListVO>> queryList();
+    List<LabelListVO> queryList();
 }
