@@ -67,6 +67,10 @@ private static final long serialVersionUID = 1L;
     @TableField("status")
     private Integer status;
 
+    @ApiModelProperty("是否超级账号：0 否，1 是")
+    @TableField("supers")
+    private Integer supers;
+
     @ApiModelProperty("是否已删除：0未删除；1已删除")
     @TableField("deleted")
     private Integer deleted;

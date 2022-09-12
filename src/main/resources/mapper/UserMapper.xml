@@ -6,6 +6,9 @@
         select
         id, phone, username, password, avatar, nike_name, real_name, sex, age, remark, status, deleted, create_user_id, create_username, create_time, update_user_id, update_username, update_time
         from user
+        <where>
+            deleted = 0
+        </where>
     </select>
 </mapper>
 
