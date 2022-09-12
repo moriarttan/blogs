@@ -3,7 +3,6 @@ package com.example.blogs.front.controller;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
 import com.example.blogs.dto.CommentDTO;
-import com.example.blogs.enums.GeneralStatusEnum;
 import com.example.blogs.front.vo.CommentListVO;
 import com.example.blogs.service.CommentService;
 import com.example.blogs.utils.CopyUtil;

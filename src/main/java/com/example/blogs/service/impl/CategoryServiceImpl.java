@@ -2,14 +2,12 @@ package com.example.blogs.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.blogs.enums.GeneralStatusEnum;
-import com.example.blogs.front.vo.ArticleListVO;
+import com.example.blogs.enums.CommonEnum;
 import com.example.blogs.front.vo.CategoryListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.CategoryDTO;
 import com.example.blogs.vo.CategoryVO;
 import com.example.blogs.common.Page;
-import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.Category;
 import com.example.blogs.mapper.CategoryMapper;
@@ -105,7 +103,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     @Override
     public List<CategoryListVO> queryList(Long parentId) {
         List<Category> list = baseMapper.selectList(new LambdaQueryWrapper<Category>()
-                .eq(Category::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .eq(Category::getDeleted, CommonEnum.NOT_DELETED.value())
                 .eq(parentId != null, Category::getParentId, parentId)
                 .orderByAsc(Category::getSort)
         );
