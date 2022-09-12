@@ -2,7 +2,7 @@ package com.example.blogs.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.enums.CommonEnum;
 import com.example.blogs.front.vo.LabelListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.LabelDTO;
@@ -104,7 +104,7 @@ public class LabelServiceImpl extends ServiceImpl<LabelMapper, Label> implements
     @Override
     public List<LabelListVO> queryList() {
         List<Label> labels = baseMapper.selectList(new LambdaQueryWrapper<Label>()
-                .eq(Label::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .eq(Label::getDeleted, CommonEnum.NOT_DELETED.value())
                 .orderByAsc(Label::getSort)
         );
         List<LabelListVO> list = new ArrayList<>();

@@ -4,7 +4,7 @@ package com.example.blogs.enums;
 /**
  * 用户状态枚举类
  */
-public enum GeneralStatusEnum {
+public enum CommonEnum {
     /**禁用*/
     FAIL(0, "禁用"),
     /**启用*/
@@ -24,7 +24,7 @@ public enum GeneralStatusEnum {
 
     private String msg;
 
-    GeneralStatusEnum(Integer value, String msg) {
+    CommonEnum(Integer value, String msg) {
         this.value = value;
         this.msg = msg;
     }
@@ -39,7 +39,7 @@ public enum GeneralStatusEnum {
 
 
     public static String getMsg(Integer value) {
-        for (GeneralStatusEnum status: GeneralStatusEnum.values()) {
+        for (CommonEnum status: CommonEnum.values()) {
             if (status.value().equals(value)) {
                 return status.message();
             }

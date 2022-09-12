@@ -2,16 +2,12 @@ package com.example.blogs.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.blogs.entity.Link;
-import com.example.blogs.enums.DeletedEnum;
-import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.enums.CommonEnum;
 import com.example.blogs.front.vo.AboutListVO;
-import com.example.blogs.front.vo.LinkListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.AboutDTO;
 import com.example.blogs.vo.AboutVO;
 import com.example.blogs.common.Page;
-import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.entity.About;
 import com.example.blogs.mapper.AboutMapper;
@@ -103,8 +99,8 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     @Override
     public List<AboutListVO> queryList() {
         List<About> lists = baseMapper.selectList(new LambdaQueryWrapper<About>()
-                .eq(About::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
-                .eq(About::getStatus, GeneralStatusEnum.PUBLISH.value())
+                .eq(About::getDeleted, CommonEnum.NOT_DELETED.value())
+                .eq(About::getStatus, CommonEnum.PUBLISH.value())
                 .orderByDesc(About::getCreateTime)
         );
         List<AboutListVO> list = new ArrayList<>();

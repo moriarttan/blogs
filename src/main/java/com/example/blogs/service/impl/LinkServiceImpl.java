@@ -2,7 +2,7 @@ package com.example.blogs.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.blogs.enums.GeneralStatusEnum;
+import com.example.blogs.enums.CommonEnum;
 import com.example.blogs.front.vo.LinkListVO;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.LinkDTO;
@@ -99,7 +99,7 @@ public class LinkServiceImpl extends ServiceImpl<LinkMapper, Link> implements Li
     @Override
     public List<LinkListVO> queryList() {
         List<Link> links = baseMapper.selectList(new LambdaQueryWrapper<Link>()
-                .eq(Link::getDeleted, GeneralStatusEnum.NOT_DELETED.value())
+                .eq(Link::getDeleted, CommonEnum.NOT_DELETED.value())
                 .orderByAsc(Link::getSort)
         );
         List<LinkListVO> list = new ArrayList<>();
