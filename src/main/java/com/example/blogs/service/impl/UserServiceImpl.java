@@ -1,6 +1,8 @@
 package com.example.blogs.service.impl;
 
+import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.blogs.back.dto.LoginDTO;
 import com.example.blogs.enums.CommonEnum;
@@ -28,17 +30,49 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     /**
-     * 登陆
+     * 根据用户昵称查询用户
      * @param dto
      * @return
      */
     @Override
-    public User queryUserByUsername(LoginDTO dto) throws UsernameNotFoundException{
+    public User queryUserByUsername(String username) {
         User user = baseMapper.selectOne(new LambdaQueryWrapper<User>()
-                .eq(User::getUsername, dto.getUsername())
+                .eq(User::getUsername, username)
                 .last("limit 1")
         );
         return user;
+    }
+    /**
+     * 根据用户手机号查询用户
+     * @param username
+     * @return
+     */
+    public User queryUserByPhone(String username) {
+        User user = baseMapper.selectOne(new LambdaQueryWrapper<User>()
+                .eq(User::getUsername, username)
+                .last("limit 1")
+        );
+        return user;
+    }
+
+    /**
+     * 注册用户
+     * @param dto dto
+     * @return
+     */
+    @Override
+    public Result<?> register(UserDTO dto) {
+        Assert.isTrue(dto.getPassword() != null, "未设置密码");
+
+        User user = queryUserByUsername(dto.getUsername());
+        Assert.isTrue(null == user, "用户已存在");
+
+        dto.setPassword(SecureUtil.md5(dto.getPassword()));
+        if (0 == add(dto)) {
+            return Result.failed("注册失败");
+        }
+
+        return Result.success();
     }
 
     /**

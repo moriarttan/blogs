@@ -99,6 +99,4 @@ public class UserDTO extends PageForm implements Serializable {
     @ApiModelProperty("修改时间")
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
-
-
 }

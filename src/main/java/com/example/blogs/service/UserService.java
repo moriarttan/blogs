@@ -18,11 +18,18 @@ public interface UserService extends IService<User> {
 
 
     /**
-     * 根据用户
-     * @param dto
+     * 根据用户名查询用户
+     * @param username 用户名
      * @return
      */
-    User queryUserByUsername(LoginDTO dto);
+    User queryUserByUsername(String username);
+
+    /**
+     * 注册用户
+     * @param dto dto
+     * @return {@link Result}
+     */
+    Result<?> register(UserDTO dto);
 
     /**
     * 分页列表

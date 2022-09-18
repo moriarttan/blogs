@@ -55,16 +55,16 @@ public class UserController {
         // 验证码校验 end
 
         // 验证用户是否有效
-        User user = userService.queryUserByUsername(dto);
+        User user = userService.queryUserByUsername(dto.getUsername());
         Result result = checkUserIsEffective(user);
-        if (200 != result.getCode()) {
+        if (!Result.isSuccess(result)) {
             return result;
         }
-
         // 校验密码是否正确
         if (user.getPassword().equals(SecureUtil.md5(password))) {
             return Result.failed("登陆失败，密码不正确！");
         }
+
         // 登陆处理
         String token = "";
         return Result.success(token);
@@ -88,6 +88,16 @@ public class UserController {
         if (CommonEnum.FAIL.value().equals(user.getStatus())) {
             log.info("登陆用户账号冻结");
             return Result.failed("登陆用户账号已冻结");
+        }
+        return Result.success();
+    }
+
+    @ApiOperation("注册")
+    @PostMapping("register")
+    public Result<?> register(@RequestBody UserDTO dto) {
+        Result result = userService.register(dto);
+        if (!Result.isSuccess(result)) {
+            return result;
         }
         return Result.success();
     }
