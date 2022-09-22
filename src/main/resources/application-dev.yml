@@ -30,7 +30,7 @@ spring:
   redis:
     database: 0
     port: 6379
-    # password: 123456
+    password: 123456
     host: 127.0.0.1
 
 #redis自定义配置
