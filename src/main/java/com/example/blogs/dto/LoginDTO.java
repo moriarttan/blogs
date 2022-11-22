@@ -1,4 +1,4 @@
-package com.example.blogs.back.dto;
+package com.example.blogs.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;

@@ -1,6 +1,7 @@
 package com.example.blogs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.blogs.back.vo.ArticleCountVO;
 import com.example.blogs.dto.ArticleDTO;
 import com.example.blogs.vo.ArticleVO;
 import com.example.blogs.common.Page;
@@ -56,4 +57,10 @@ public interface ArticleService extends IService<Article> {
     * @return {@link Result}
     */
     Result<?> delete(Long id);
+
+    /**
+     * 获取文章统计
+     * @return ArticleCountVO
+     */
+    ArticleCountVO getCount();
 }

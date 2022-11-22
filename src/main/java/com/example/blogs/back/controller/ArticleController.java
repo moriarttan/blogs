@@ -2,7 +2,11 @@ package com.example.blogs.back.controller;
 
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.example.blogs.back.vo.ArticleCountVO;
 import com.example.blogs.dto.ArticleDTO;
+import com.example.blogs.entity.Article;
+import com.example.blogs.enums.DeletedEnum;
 import com.example.blogs.vo.ArticleVO;
 import com.example.blogs.common.IdForm;
 import com.example.blogs.common.Page;
@@ -66,6 +70,13 @@ public class ArticleController {
     @PostMapping("delete")
     public Result<?> delete(@RequestBody @Validated IdForm idForm) {
         return articleService.delete(idForm.getId());
+    }
+
+    @ApiOperation("文章统计")
+    @GetMapping("count")
+    public Result<ArticleCountVO> count() {
+        ArticleCountVO vo = articleService.getCount();
+        return Result.success(vo);
     }
 }
 

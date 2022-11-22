@@ -2,26 +2,26 @@ package com.example.blogs.back.controller;
 
 
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.log.Log;
-import com.example.blogs.back.dto.LoginDTO;
+import com.example.blogs.dto.LoginDTO;
+import com.example.blogs.dto.RegisterDTO;
 import com.example.blogs.dto.UserDTO;
 import com.example.blogs.entity.User;
 import com.example.blogs.enums.CommonEnum;
+import com.example.blogs.security.entity.SelfUserEntity;
+import com.example.blogs.security.utils.JWTUtil;
 import com.example.blogs.vo.UserVO;
 import com.example.blogs.common.IdForm;
 import com.example.blogs.common.Page;
-import com.example.blogs.common.PageForm;
 import com.example.blogs.common.Result;
 import com.example.blogs.service.UserService;
 import com.example.blogs.validation.GroupsAdd;
 import com.example.blogs.validation.GroupsUpdate;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,7 +55,7 @@ public class UserController {
         // 验证码校验 end
 
         // 验证用户是否有效
-        User user = userService.queryUserByUsername(dto.getUsername());
+        User user = userService.queryUserByUsername(username);
         Result result = checkUserIsEffective(user);
         if (!Result.isSuccess(result)) {
             return result;
@@ -65,40 +65,15 @@ public class UserController {
             return Result.failed("登陆失败，密码不正确！");
         }
 
-        // 登陆处理
-        String token = "";
+        // 生成token
+        String token = JWTUtil.createAccessToken(BeanUtil.copyProperties(user, SelfUserEntity.class));
         return Result.success(token);
-    }
-
-
-    /**
-     * 用户校验
-     * @param user
-     * @return
-     */
-    public Result<?> checkUserIsEffective(User user) {
-        if (null == user) {
-            log.info("登陆用户不存在");
-            return Result.failed("登陆用户不存在");
-        }
-        if (CommonEnum.DELETED.value().equals(user.getDeleted())) {
-            log.info("登陆用户账号已注销");
-            return Result.failed("登陆用户账号已注销");
-        }
-        if (CommonEnum.FAIL.value().equals(user.getStatus())) {
-            log.info("登陆用户账号冻结");
-            return Result.failed("登陆用户账号已冻结");
-        }
-        return Result.success();
     }
 
     @ApiOperation("注册")
     @PostMapping("register")
-    public Result<?> register(@RequestBody UserDTO dto) {
-        Result result = userService.register(dto);
-        if (!Result.isSuccess(result)) {
-            return result;
-        }
+    public Result<?> register(@RequestBody @Validated RegisterDTO dto) {
+        userService.register(dto);
         return Result.success();
     }
 
@@ -141,6 +116,27 @@ public class UserController {
     public Result<?> delete(@RequestBody @Validated IdForm idForm) {
         if (userService.delete(idForm.getId()) == 0) {
             return Result.failed("删除操作失败");
+        }
+        return Result.success();
+    }
+
+    /**
+     * 用户校验
+     * @param user
+     * @return
+     */
+    public Result<?> checkUserIsEffective(User user) {
+        if (null == user) {
+            log.info("登陆用户不存在");
+            return Result.failed("登陆用户不存在");
+        }
+        if (CommonEnum.DELETED.value().equals(user.getDeleted())) {
+            log.info("登陆用户账号已注销");
+            return Result.failed("登陆用户账号已注销");
+        }
+        if (CommonEnum.FAIL.value().equals(user.getStatus())) {
+            log.info("登陆用户账号冻结");
+            return Result.failed("登陆用户账号已冻结");
         }
         return Result.success();
     }

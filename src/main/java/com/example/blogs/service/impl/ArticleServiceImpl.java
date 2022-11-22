@@ -1,6 +1,9 @@
 package com.example.blogs.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.blogs.back.vo.ArticleCountVO;
+import com.example.blogs.enums.DeletedEnum;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.ArticleDTO;
 import com.example.blogs.vo.ArticleVO;
@@ -89,5 +92,18 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             return Result.failed("删除操作失败");
         }
         return Result.success();
+    }
+
+
+    /**
+     * 获取文章统计
+     * @return ArticleCountVO
+     */
+    @Override
+    public ArticleCountVO getCount() {
+        ArticleCountVO vo = new ArticleCountVO();
+        int count = baseMapper.selectCount(new LambdaQueryWrapper<Article>().eq(Article::getDeleted, DeletedEnum.NOT_DELETED.value()));
+        vo.setCount(count);
+        return vo;
     }
 }

@@ -1,7 +1,7 @@
 package com.example.blogs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.blogs.back.dto.LoginDTO;
+import com.example.blogs.dto.RegisterDTO;
 import com.example.blogs.dto.UserDTO;
 import com.example.blogs.vo.UserVO;
 import com.example.blogs.common.Page;
@@ -29,7 +29,7 @@ public interface UserService extends IService<User> {
      * @param dto dto
      * @return {@link Result}
      */
-    Result<?> register(UserDTO dto);
+    void register(RegisterDTO dto);
 
     /**
     * 分页列表

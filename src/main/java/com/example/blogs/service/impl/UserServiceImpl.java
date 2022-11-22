@@ -4,9 +4,8 @@ import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.blogs.back.dto.LoginDTO;
+import com.example.blogs.dto.RegisterDTO;
 import com.example.blogs.enums.CommonEnum;
-import com.example.blogs.service.RedisService;
 import com.github.pagehelper.PageHelper;
 import com.example.blogs.dto.UserDTO;
 import com.example.blogs.vo.UserVO;
@@ -17,14 +16,8 @@ import com.example.blogs.mapper.UserMapper;
 import com.example.blogs.service.UserService;
 import com.example.blogs.utils.CopyUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
 * 用户表 服务实现类
@@ -67,18 +60,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @return
      */
     @Override
-    public Result<?> register(UserDTO dto) {
-        Assert.isTrue(dto.getPassword() != null, "未设置密码");
-
+    public void register(RegisterDTO dto) {
+        //查询用户名是否重复
         User user = queryUserByUsername(dto.getUsername());
-        Assert.isTrue(null == user, "用户已存在");
-
-        dto.setPassword(SecureUtil.md5(dto.getPassword()));
-        if (0 == add(dto)) {
-            return Result.failed("注册失败");
-        }
-
-        return Result.success();
+        Assert.isNull(user, "用户已存在");
+        //注册账号
+        user = new User();
+        user.setUsername(dto.getUsername());
+        user.setPassword(SecureUtil.md5(dto.getPassword()));
+        int tag = baseMapper.insert(user);
+        Assert.isTrue(tag != 0, "注册失败");
     }
 
     /**

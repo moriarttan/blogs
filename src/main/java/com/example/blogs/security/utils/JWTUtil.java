@@ -37,7 +37,7 @@ public class JWTUtil {
                 // 签发时间
                 .setIssuedAt(new Date())
                 // 签发者
-                .setIssuer("YQN")
+                .setIssuer("THD")
                 // 自定义属性 放入用户拥有权限
                 .claim("authorities", JSON.toJSONString(selfUserEntity.getAuthorities()))
                 // 失效时间
