@@ -11,6 +11,7 @@ import com.example.blogs.entity.User;
 import com.example.blogs.enums.CommonEnum;
 import com.example.blogs.security.entity.SelfUserEntity;
 import com.example.blogs.security.utils.JWTUtil;
+import com.example.blogs.vo.CurrentUserInfoVO;
 import com.example.blogs.vo.UserVO;
 import com.example.blogs.common.IdForm;
 import com.example.blogs.common.Page;
@@ -45,9 +46,10 @@ public class UserController {
 
     @ApiOperation("登陆")
     @PostMapping("login")
-    public Result<?> login(LoginDTO dto) {
+    public Result<?> login(@RequestBody @Validated LoginDTO dto) {
         String username = dto.getUsername();
         String password = dto.getPassword();
+
         // 用户名密码解密 start
         // 用户名密码解密 end
 
@@ -60,8 +62,9 @@ public class UserController {
         if (!Result.isSuccess(result)) {
             return result;
         }
+
         // 校验密码是否正确
-        if (user.getPassword().equals(SecureUtil.md5(password))) {
+        if (!user.getPassword().equals(password)) {
             return Result.failed("登陆失败，密码不正确！");
         }
 
@@ -75,6 +78,12 @@ public class UserController {
     public Result<?> register(@RequestBody @Validated RegisterDTO dto) {
         userService.register(dto);
         return Result.success();
+    }
+
+    @ApiOperation("获取登录用户信息")
+    @GetMapping("currentInfo")
+    public Result<CurrentUserInfoVO> currentInfo(@RequestBody @Validated RegisterDTO dto) {
+        return Result.success(userService.currentInfo(dto));
     }
 
     @PreAuthorize("hasAuthority('user:pageList')")

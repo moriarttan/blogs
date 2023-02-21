@@ -4,11 +4,11 @@ server:
     context-path: /
 
 # 域名
-domain: www.baidu.com
+domain: 121.4.84.225
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/blogs?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://121.4.84.225:3306/blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,7 +21,7 @@ spring:
   redis:
     database: 0
     port: 6379
-    password: 123456
+    password:
 
 #redis自定义配置
 redis:
@@ -48,6 +48,27 @@ mybatis-plus:
 logging:
   config: classpath:logback-spring-prod.xml
 
+#邮箱验证码配置
+mail:
+  #smtp服务主机  qq邮箱则为smtp.qq.com;163邮箱是smtp.163.com
+  host: smtp.qq.com
+  #服务协议
+  protocol: smtp
+  #编码集
+  default-encoding: UTF-8
+  #发送邮件的账户
+  username: 934509211@qq.com
+  #授权码
+  password: qrnmrtxpajsybeag
+  test-connection: true
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+          required: true
+
 #file
 file:
   # 上传路径
@@ -57,15 +78,12 @@ file:
   # 返回前缀
   prefix: http://${domain}/img/
 
-
-
 # 微信
 wechat:
   # 公众号id
   app-id: appid
   # 密钥
   app-secret: appsecret
-
 
 # 微信支付
 wechat-pay:

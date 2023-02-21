@@ -1,14 +1,15 @@
-package com.example.blogs.entity;
+package com.example.blogs.vo;
 
-    import com.baomidou.mybatisplus.annotation.FieldFill;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import com.baomidou.mybatisplus.annotation.TableId;
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import java.io.Serializable;
-    import java.time.LocalDateTime;
-    import io.swagger.annotations.ApiModel;
-    import io.swagger.annotations.ApiModelProperty;
-    import lombok.Data;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
 * 用户表
@@ -18,8 +19,8 @@ package com.example.blogs.entity;
 */
 @Data
 @TableName("user")
-@ApiModel(value = "User对象", description = "用户表")
-public class User implements Serializable {
+@ApiModel(value = "UserVO对象", description = "用户表")
+public class CurrentUserInfoVO implements Serializable {
 
 private static final long serialVersionUID = 1L;
 
@@ -36,7 +37,7 @@ private static final long serialVersionUID = 1L;
     private String username;
 
     @ApiModelProperty("用户密码")
-    @TableField("`password`")
+    @TableField("password")
     private String password;
 
     @ApiModelProperty("头像")
@@ -64,11 +65,11 @@ private static final long serialVersionUID = 1L;
     private String remark;
 
     @ApiModelProperty("状态：0 停用，1 启用")
-    @TableField("`status`")
+    @TableField("status")
     private Integer status;
 
     @ApiModelProperty("是否超级账号：0 否，1 是")
-    @TableField("`supers`")
+    @TableField("supers")
     private Integer supers;
 
     @ApiModelProperty("是否已删除：0未删除；1已删除")
@@ -99,30 +100,5 @@ private static final long serialVersionUID = 1L;
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", phone=" + phone +
-                ", username=" + username +
-                ", password=" + password +
-                ", avatar=" + avatar +
-                ", nikeName=" + nikeName +
-                ", realName=" + realName +
-                ", sex=" + sex +
-                ", age=" + age +
-                ", remark=" + remark +
-                ", status=" + status +
-                ", deleted=" + deleted +
-                ", createUserId=" + createUserId +
-                ", createUsername=" + createUsername +
-                ", createTime=" + createTime +
-                ", updateUserId=" + updateUserId +
-                ", updateUsername=" + updateUsername +
-                ", updateTime=" + updateTime +
-        "}";
-    }
 
 }

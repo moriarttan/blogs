@@ -3,6 +3,7 @@ package com.example.blogs.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.blogs.dto.RegisterDTO;
 import com.example.blogs.dto.UserDTO;
+import com.example.blogs.vo.CurrentUserInfoVO;
 import com.example.blogs.vo.UserVO;
 import com.example.blogs.common.Page;
 import com.example.blogs.common.Result;
@@ -32,13 +33,18 @@ public interface UserService extends IService<User> {
     void register(RegisterDTO dto);
 
     /**
+     * 当前登录用户信息
+     * @param dto
+     */
+    CurrentUserInfoVO currentInfo(RegisterDTO dto);
+
+    /**
     * 分页列表
     *
     * @param dto 分页列表查询页码页数
     * @return {@link UserVO}
     */
     Page<UserVO> pageList(UserDTO dto);
-
 
     /**
      * 新增
@@ -71,5 +77,4 @@ public interface UserService extends IService<User> {
      * @return {@link Result}
      */
     Integer delete(Long id);
-
 }

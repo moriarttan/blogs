@@ -24,4 +24,13 @@ public class RegisterDTO {
     @ApiModelProperty("用户密码")
     @TableField("password")
     private String password;
+
+    @NotNull(message = "手机号不为空")
+    @ApiModelProperty("手机号")
+    @TableField("phone")
+    private String phone;
+
+    @NotNull(message = "验证码不为空")
+    @ApiModelProperty("邮箱验证码")
+    private String emailCode;
 }
