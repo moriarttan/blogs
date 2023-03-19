@@ -50,12 +50,12 @@ public class AboutDTO extends PageForm implements Serializable {
     private Integer sizeNumber;
 
     @ApiModelProperty("是否允许点赞：0 否，1 是")
-    @TableField("`like`")
-    private Boolean like;
+    @TableField("liked")
+    private Boolean liked;
 
     @ApiModelProperty("是否允许评论：0 否，1 是")
-    @TableField("comment")
-    private Boolean comment;
+    @TableField("commented")
+    private Boolean commented;
 
     @ApiModelProperty("状态：0 未发布，1 已发布")
     @TableField("status")
