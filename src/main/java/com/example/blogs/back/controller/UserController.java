@@ -64,7 +64,7 @@ public class UserController {
         }
 
         // 校验密码是否正确
-        if (!user.getPassword().equals(password)) {
+        if (!user.getPassword().equals(SecureUtil.md5(password))) {
             return Result.failed("登陆失败，密码不正确！");
         }
 
